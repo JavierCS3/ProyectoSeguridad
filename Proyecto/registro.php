@@ -1,5 +1,5 @@
 <?php
-$servername = "mysql://SG-Cinepolis-equipo-1-8696-mysql-master.servers.mongodirector.com";
+$servername = "SG-Cinepolis-equipo-1-8696-mysql-master.servers.mongodirector.com";
 $username = "sgroot";
 $password = "CZHEl@zTU5Bnpg5K";
 $dbname = "seguridad"; 
