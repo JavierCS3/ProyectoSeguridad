@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptación DES</title>
+    <link rel="stylesheet" href="styles3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Algoritmo de Encriptación DES</h1>
+        <div class="grupo-entrada">
+            <label for="texto">Texto:</label>
+            <textarea id="texto" rows="4" cols="50"></textarea>
+        </div>
+        <div class="grupo-entrada">
+            <label for="clave">Clave:</label>
+            <input type="text" id="clave">
+        </div>
+        <div class="botones">
+            <button onclick="encriptar()">Encriptar</button>
+            <button onclick="desencriptar()">Desencriptar</button>
+        </div>
+        <div class="grupo-salida">
+            <label for="resultado">Resultado:</label>
+            <textarea id="resultado" rows="4" cols="50" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function encriptar() {
+            const texto = document.getElementById('texto').value;
+            const clave = document.getElementById('clave').value;
+            if (texto && clave) {
+                const encriptado = CryptoJS.DES.encrypt(texto, clave).toString();
+                document.getElementById('resultado').value = encriptado;
+            } else {
+                alert('Teclea el texto y la clave.');
+            }
+        }
+
+        function desencriptar() {
+            const textoEncriptado = document.getElementById('resultado').value;
+            const clave = document.getElementById('clave').value;
+            if (textoEncriptado && clave) {
+                const desencriptado = CryptoJS.DES.decrypt(textoEncriptado, clave);
+                const textoOriginal = desencriptado.toString(CryptoJS.enc.Utf8);
+                document.getElementById('resultado').value = textoOriginal;
+            } else {
+                alert('Teclea el texto encriptado y la clave.');
+            }
+        }
+    </script>
+</body>
+</html>
